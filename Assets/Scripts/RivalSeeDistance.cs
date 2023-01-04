@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RivalSeeDistance : MonoBehaviour
 {
+    //mainde olacak
     [SerializeField] private Hit hit;
     private void OnTriggerEnter(Collider other)
     {
