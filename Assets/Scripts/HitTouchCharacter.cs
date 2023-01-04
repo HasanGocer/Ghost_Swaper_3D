@@ -9,7 +9,12 @@ public class HitTouchCharacter : MonoBehaviour
     {
         if (other.CompareTag("Rival"))
         {
-
+            RivalControl(other.gameObject);
+            BacksRivalDead();
+            CameraSwap(other.gameObject);
+            CharacterSwap(other.gameObject);
+            ComponentPlacement();
+            DeadCountAndFinishCheck();
         }
         else if (other.CompareTag("Main"))
         {
@@ -27,6 +32,7 @@ public class HitTouchCharacter : MonoBehaviour
         GameObject main = GhostManager.Instance.mainPlayer;
         main.GetComponent<AnimController>().CallDeadAnim();
         main.GetComponent<CapsuleCollider>().enabled = false;
+        main.GetComponent<RivalSeeDistance>().isSwap = true;
         //partical
     }
     private void CameraSwap(GameObject rival)
@@ -34,17 +40,17 @@ public class HitTouchCharacter : MonoBehaviour
         GhostManager.Instance.camera.transform.DOMove(rival.GetComponent<RivalID>().cameraTempPos.transform.position, 2).SetEase(Ease.InOutBack);
         //targert deðiþim
     }
-    private void ComponentPlacement()
-    {
-        GameObject main = GhostManager.Instance.mainPlayer;
-        main.GetComponent<MainSeeDistance>().enabled = false;
-        main.AddComponent<RivalSeeDistance>();
-    }
     private void CharacterSwap(GameObject rival)
     {
         GhostManager.Instance.mainPlayer.tag = "Rival";
         GhostManager.Instance.mainPlayer = rival;
         rival.tag = "Main";
+    }
+    private void ComponentPlacement()
+    {
+        GameObject main = GhostManager.Instance.mainPlayer;
+        main.GetComponent<MainSeeDistance>().enabled = false;
+        main.AddComponent<RivalSeeDistance>();
     }
     private void DeadCountAndFinishCheck()
     {

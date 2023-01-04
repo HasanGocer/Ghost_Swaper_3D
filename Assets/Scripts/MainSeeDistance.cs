@@ -6,32 +6,40 @@ public class MainSeeDistance : MonoBehaviour
 {
     //rivalde olcak
     [SerializeField] private Hit hit;
-    private bool isStaySee = false;
+    [SerializeField] private RivalAI rivalAI;
     [SerializeField] private float gunReloadTime;
+    [SerializeField] private float maxDistance = 10.0f;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Main"))
-        {
-            StartCoroutine(GunFire(other.gameObject));
-            isStaySee = true;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Main"))
-            isStaySee = false;
-    }
 
     public IEnumerator GunFire(GameObject main)
     {
-        while (isStaySee)
+        rivalAI.isSeeMain = true;
+        StartCoroutine(hit.HitPlayer(main.gameObject));
+        yield return new WaitForSeconds(gunReloadTime);
+        rivalAI.isSeeMain = false;
+    }
+
+    public IEnumerator MainSeeRaycast()
+    {
+        while (rivalAI.isLive)
         {
-            GetComponent<RivalAI>().isSeeMain = true;
-            StartCoroutine(hit.HitPlayer(main.gameObject));
-            yield return new WaitForSeconds(gunReloadTime);
+            Vector3 eyePosition = transform.position + Vector3.up;
+
+            for (float angle = -50f; angle <= 50f; angle += 5f)
+            {
+                Vector3 direction = transform.forward;
+
+                direction = Quaternion.Euler(0, angle, 0) * direction;
+
+                Physics.Raycast(eyePosition, direction, out RaycastHit hitInfo, maxDistance);
+                if (hitInfo.transform.gameObject.CompareTag("Main"))
+                {
+                    StartCoroutine(GunFire(hitInfo.transform.gameObject));
+                    yield return new WaitForSeconds(gunReloadTime);
+                }
+            }
+            yield return new WaitForSeconds(Time.deltaTime);
         }
-        GetComponent<RivalAI>().isSeeMain = false;
+        yield return null;
     }
 }
