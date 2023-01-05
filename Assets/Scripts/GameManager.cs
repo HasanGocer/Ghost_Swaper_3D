@@ -27,6 +27,14 @@ public class GameManager : MonoSingleton<GameManager>
             PlayerPrefs.SetInt("money", 100);
         MoneySystem.Instance.MoneyTextRevork(0);
 
+        if (PlayerPrefs.HasKey("level"))
+            vibration = PlayerPrefs.GetInt("level");
+        else
+        {
+            PlayerPrefs.SetInt("level", 1);
+            vibration = PlayerPrefs.GetInt("level");
+        }
+
         if (PlayerPrefs.HasKey("vibration"))
             vibration = PlayerPrefs.GetInt("vibration");
         else
@@ -75,6 +83,10 @@ public class GameManager : MonoSingleton<GameManager>
     public void SetSound()
     {
         PlayerPrefs.SetInt("sound", sound);
+    }
+    public void SetLevel()
+    {
+        PlayerPrefs.SetInt("level", level);
     }
 
     public void SetVibration()

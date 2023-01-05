@@ -25,7 +25,6 @@ public class Buttons : MonoSingleton<Buttons>
     public Button winButton;
 
     public Text finishGameMoneyText;
-    [SerializeField] private GameObject _startObject1;
 
     public Text moneyText, levelText;
 
@@ -77,7 +76,6 @@ public class Buttons : MonoSingleton<Buttons>
     private void StartButton()
     {
         MarketSystem.Instance.GameStart();
-        _startObject1.SetActive(true);
         _startPanel.SetActive(false);
         GameManager.Instance.isStart = true;
     }

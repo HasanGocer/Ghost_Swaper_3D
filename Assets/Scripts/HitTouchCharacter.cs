@@ -25,6 +25,7 @@ public class HitTouchCharacter : MonoBehaviour
     private void RivalControl(GameObject rival)
     {
         rival.GetComponent<RivalAI>().isLive = false;
+        rival.GetComponent<PlayerMovment>().enabled = false;
     }
     private void BacksRivalDead()
     {
@@ -49,6 +50,9 @@ public class HitTouchCharacter : MonoBehaviour
         GameObject main = GhostManager.Instance.mainPlayer;
         main.GetComponent<MainSeeDistance>().enabled = false;
         main.AddComponent<RivalSeeDistance>();
+        PlayerMovment playerMovment = main.AddComponent<PlayerMovment>();
+        playerMovment.joystick = GhostManager.Instance.joystick;
+        playerMovment.rb = main.GetComponent<Rigidbody>();
     }
     private void DeadCountAndFinishCheck()
     {

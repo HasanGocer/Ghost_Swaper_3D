@@ -5,5 +5,5 @@ using UnityEngine;
 public class GhostManager : MonoSingleton<GhostManager>
 {
     public GameObject mainPlayer;
-    public GameObject camera;
+    public Joystick joystick; // The instantiated joystick object
 }

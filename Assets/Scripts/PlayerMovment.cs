@@ -6,8 +6,8 @@ using UnityEngine.EventSystems;
 public class PlayerMovment : MonoBehaviour
 {
     [SerializeField] private float speed = 6.0f; // Player movement speed
-    [SerializeField] private Joystick joystick; // The instantiated joystick object
-    [SerializeField] private Rigidbody rb; // The rigidbody component
+    public Joystick joystick; // The instantiated joystick object
+    public Rigidbody rb; // The rigidbody component
     private Touch touch; // The touch component
 
     void Update()
