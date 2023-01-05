@@ -326,6 +326,7 @@ GameObject:
   - component: {fileID: 694574727948587529}
   - component: {fileID: 694574727948587528}
   - component: {fileID: 694574727948587574}
+  - component: {fileID: 2216414986714763836}
   m_Layer: 0
   m_Name: Main
   m_TagString: Main
@@ -342,7 +343,7 @@ Transform:
   m_GameObject: {fileID: 694574727948587573}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 694574727948226143}
   - {fileID: 694574727948226133}
@@ -461,6 +462,20 @@ MonoBehaviour:
   isSwap: 0
   gunReloadTime: 1
   maxDistance: 10
+--- !u!136 &2216414986714763836
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 694574727948587573}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.44
+  m_Height: 1.99
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.81, z: 0}
 --- !u!1 &694574727948587575
 GameObject:
   m_ObjectHideFlags: 0

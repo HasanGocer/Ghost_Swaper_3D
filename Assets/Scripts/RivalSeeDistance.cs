@@ -25,13 +25,12 @@ public class RivalSeeDistance : MonoBehaviour
         {
             Vector3 eyePosition = transform.position + Vector3.up;
 
-            for (float angle = -50f; angle <= 50f; angle += 5f)
+            for (float angle = -100f; angle <= 100f; angle += 5f)
             {
                 Vector3 direction = transform.position;
 
                 Quaternion rotation = transform.rotation;
                 Vector3 eulerAngles = rotation.eulerAngles;
-                print(Mathf.Sin(eulerAngles.y));
 
                 float xRad = 10 * Mathf.Sin(Mathf.Deg2Rad * eulerAngles.y);
                 float yRad = 10 * Mathf.Cos(Mathf.Deg2Rad * eulerAngles.y);
@@ -40,11 +39,14 @@ public class RivalSeeDistance : MonoBehaviour
                 Debug.DrawLine(eyePosition, direction, Color.red, 1f);
                 RaycastHit hitInfo;
                 if (Physics.Raycast(eyePosition, direction, out hitInfo, maxDistance))
+                {
                     if (hitInfo.transform.gameObject.CompareTag("Rival"))
                     {
                         StartCoroutine(GunFire(hitInfo.transform.gameObject));
                         yield return new WaitForSeconds(gunReloadTime);
                     }
+                }
+
             }
             yield return new WaitForSeconds(Time.deltaTime);
         }

@@ -25,7 +25,7 @@ public class HitTouchCharacter : MonoBehaviour
     private void RivalControl(GameObject rival)
     {
         rival.GetComponent<RivalAI>().isLive = false;
-        rival.GetComponent<PlayerMovment>().enabled = false;
+        GhostManager.Instance.mainPlayer.GetComponent<PlayerMovment>().enabled = false;
     }
     private void BacksRivalDead()
     {

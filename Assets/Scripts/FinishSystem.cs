@@ -9,7 +9,7 @@ public class FinishSystem : MonoSingleton<FinishSystem>
 
     public void FinishCheck()
     {
-        if (focusScene.rivalCount - 2 == deadRival)
+        if (focusScene.rivalCount == deadRival)
         {
             //bulunduðumuz karakteri öldür 
             //finish
