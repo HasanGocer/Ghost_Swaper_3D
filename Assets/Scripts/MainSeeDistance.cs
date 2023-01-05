@@ -21,6 +21,7 @@ public class MainSeeDistance : MonoBehaviour
 
     public IEnumerator MainSeeRaycast()
     {
+        yield return null;
         while (rivalAI.isLive)
         {
             Vector3 eyePosition = transform.position + Vector3.up;
@@ -40,6 +41,5 @@ public class MainSeeDistance : MonoBehaviour
             }
             yield return new WaitForSeconds(Time.deltaTime);
         }
-        yield return null;
     }
 }

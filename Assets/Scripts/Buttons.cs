@@ -8,7 +8,7 @@ public class Buttons : MonoSingleton<Buttons>
 {
     //managerde bulunacak
 
-    [SerializeField] private GameObject _money;
+    [SerializeField] private GameObject _globalPanel;
 
     public GameObject _startPanel;
     [SerializeField] private Button _startButton;
@@ -75,7 +75,8 @@ public class Buttons : MonoSingleton<Buttons>
 
     private void StartButton()
     {
-        MarketSystem.Instance.GameStart();
+        StartCoroutine(GhostManager.Instance.mainPlayer.GetComponent<RivalSeeDistance>().MainSeeRaycast());
+        //RoomManager.Instance.RivalCountPlacement();
         _startPanel.SetActive(false);
         GameManager.Instance.isStart = true;
     }
@@ -90,14 +91,14 @@ public class Buttons : MonoSingleton<Buttons>
         _startPanel.SetActive(false);
         _settingGame.SetActive(true);
         _settingButton.gameObject.SetActive(false);
-        _money.SetActive(false);
+        _globalPanel.SetActive(false);
     }
     private void SettingBackButton()
     {
         _startPanel.SetActive(true);
         _settingGame.SetActive(false);
         _settingButton.gameObject.SetActive(true);
-        _money.SetActive(true);
+        _globalPanel.SetActive(true);
     }
     private void SoundButton()
     {
