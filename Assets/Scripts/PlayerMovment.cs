@@ -12,7 +12,7 @@ public class PlayerMovment : MonoBehaviour
 
     void Update()
     {
-        if (Input.touchCount > 0)
+        if (Input.touchCount > 0 && GameManager.Instance.isStart)
         {
             touch = Input.GetTouch(0);
 

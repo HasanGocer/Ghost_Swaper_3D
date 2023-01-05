@@ -53,8 +53,10 @@ public class HitTouchCharacter : MonoBehaviour
     }
     private void CharacterSwap(GameObject rival)
     {
-        GhostManager.Instance.mainPlayer.tag = "Rival";
+        GhostManager.Instance.mainPlayer.tag = "Dead";
+        GhostManager.Instance.mainPlayer.transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().material = MaterialSystem.Instance.deadMaterial;
         GhostManager.Instance.mainPlayer = rival;
+        rival.transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().material = MaterialSystem.Instance.MainMaterial;
         rival.tag = "Main";
     }
     private void ComponentPlacement()

@@ -9,3 +9,4 @@ public class GhostManager : MonoSingleton<GhostManager>
     public Joystick joystick; // The instantiated joystick object
     public PostProcessVolume volume;
 }
+
