@@ -80,7 +80,6 @@ public class Buttons : MonoSingleton<Buttons>
         _startObject1.SetActive(true);
         _startPanel.SetActive(false);
         GameManager.Instance.isStart = true;
-        AnimControl.Instance.StartAnimencer();
     }
 
     private void FailButton()

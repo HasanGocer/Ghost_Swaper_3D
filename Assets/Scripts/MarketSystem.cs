@@ -24,7 +24,6 @@ public class MarketSystem : MonoSingleton<MarketSystem>
     public FieldBool fieldBool;
     public FieldRivalColor fieldPlayerColor;
 
-    [SerializeField] private GameObject _mainPlayer;
     public GameObject marketMainPlayer;
     [SerializeField] private Button _useButton, _equipedButton, _moneyBuyButton, _addBuyButton;
     [SerializeField] private Text _moneyBuyPriceText;
@@ -52,7 +51,6 @@ public class MarketSystem : MonoSingleton<MarketSystem>
         _marketOpenButton.gameObject.SetActive(false);
         marketMainPlayer.SetActive(true);
         marketPanel.SetActive(true);
-        AnimControl.Instance.CallMarketAnim();
     }
 
     public void MarketCloseButton()
@@ -61,11 +59,6 @@ public class MarketSystem : MonoSingleton<MarketSystem>
         _marketOpenButton.gameObject.SetActive(true);
         marketMainPlayer.SetActive(false);
         marketPanel.SetActive(false);
-    }
-
-    public void FinishGameBackToTheMaterial()
-    {
-        _mainPlayer.transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().material = fieldPlayerColor.PlayerColorMaterial[fieldBool.equipedCount];
     }
 
     private void SelectMarketPlayerColorFieldButton(int count)
@@ -100,7 +93,6 @@ public class MarketSystem : MonoSingleton<MarketSystem>
         _equipedButton.gameObject.SetActive(true);
         _useButton.gameObject.SetActive(false);
         fieldBool.equipedCount = fieldCount;
-        _mainPlayer.transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().material = fieldPlayerColor.PlayerColorMaterial[fieldCount];
         marketMainPlayer.transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().material = fieldPlayerColor.PlayerColorMaterial[fieldCount];
         GameManager.Instance.MarketPlacementWrite(fieldBool);
     }
@@ -135,7 +127,6 @@ public class MarketSystem : MonoSingleton<MarketSystem>
     }
     private void PlayerMaterialPlacement()
     {
-        _mainPlayer.transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().material = fieldPlayerColor.PlayerColorMaterial[fieldBool.equipedCount];
         marketMainPlayer.transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().material = fieldPlayerColor.PlayerColorMaterial[fieldBool.equipedCount];
     }
     private void DownButtonPlacement()

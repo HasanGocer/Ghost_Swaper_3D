@@ -3,22 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class HitTouchCharacter : MonoBehaviour
+public class GhostMode : MonoBehaviour
 {
+
+    //iptal
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Rival"))
         {
             RivalControl(other.gameObject);
-            BacksRivalDead();
             CameraSwap(other.gameObject);
-            CharacterSwap(other.gameObject);
+            CharacterSelect(other.gameObject);
             ComponentPlacement();
             DeadCountAndFinishCheck();
-        }
-        else if (other.CompareTag("Main"))
-        {
-            //fail
         }
     }
 
@@ -26,22 +23,13 @@ public class HitTouchCharacter : MonoBehaviour
     {
         rival.GetComponent<RivalAI>().isLive = false;
     }
-    private void BacksRivalDead()
-    {
-        GameObject main = GhostManager.Instance.mainPlayer;
-        main.GetComponent<AnimController>().CallDeadAnim();
-        main.GetComponent<CapsuleCollider>().enabled = false;
-        main.GetComponent<RivalSeeDistance>().isSwap = true;
-        //partical
-    }
     private void CameraSwap(GameObject rival)
     {
         GhostManager.Instance.camera.transform.DOMove(rival.GetComponent<RivalID>().cameraTempPos.transform.position, 2).SetEase(Ease.InOutBack);
         //targert deðiþim
     }
-    private void CharacterSwap(GameObject rival)
+    private void CharacterSelect(GameObject rival)
     {
-        GhostManager.Instance.mainPlayer.tag = "Rival";
         GhostManager.Instance.mainPlayer = rival;
         rival.tag = "Main";
     }
