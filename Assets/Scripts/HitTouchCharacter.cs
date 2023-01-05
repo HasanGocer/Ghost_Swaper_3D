@@ -36,8 +36,7 @@ public class HitTouchCharacter : MonoBehaviour
     }
     private void CameraSwap(GameObject rival)
     {
-        GhostManager.Instance.camera.transform.DOMove(rival.GetComponent<RivalID>().cameraTempPos.transform.position, 2).SetEase(Ease.InOutBack);
-        //targert deðiþim
+        CamMoveControl.Instance.target = rival;
     }
     private void CharacterSwap(GameObject rival)
     {
