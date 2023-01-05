@@ -32,12 +32,12 @@ public class MainSeeDistance : MonoBehaviour
 
                 direction = Quaternion.Euler(0, angle, 0) * direction;
 
-                Physics.Raycast(eyePosition, direction, out RaycastHit hitInfo, maxDistance);
-                if (hitInfo.transform.gameObject.CompareTag("Main"))
-                {
-                    StartCoroutine(GunFire(hitInfo.transform.gameObject));
-                    yield return new WaitForSeconds(gunReloadTime);
-                }
+                if (Physics.Raycast(eyePosition, direction, out RaycastHit hitInfo, maxDistance))
+                    if (hitInfo.transform.gameObject.CompareTag("Main"))
+                    {
+                        StartCoroutine(GunFire(hitInfo.transform.gameObject));
+                        yield return new WaitForSeconds(gunReloadTime);
+                    }
             }
             yield return new WaitForSeconds(Time.deltaTime);
         }

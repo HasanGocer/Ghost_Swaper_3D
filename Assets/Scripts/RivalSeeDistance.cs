@@ -20,38 +20,33 @@ public class RivalSeeDistance : MonoBehaviour
 
     public IEnumerator MainSeeRaycast()
     {
-        print(1);
         yield return null;
-        print(2);
         while (!isSwap)
         {
-            print(3);
             Vector3 eyePosition = transform.position + Vector3.up;
-            print(4);
 
             for (float angle = -50f; angle <= 50f; angle += 5f)
             {
-                print(5);
-                Vector3 direction = transform.forward;
+                Vector3 direction = transform.position;
 
-                print(6);
-                direction = Quaternion.Euler(0, angle, 0) * direction;
-                print(7);
+                Quaternion rotation = transform.rotation;
+                Vector3 eulerAngles = rotation.eulerAngles;
+                print(Mathf.Sin(eulerAngles.y));
+
+                float xRad = 10 * Mathf.Sin(Mathf.Deg2Rad * eulerAngles.y);
+                float yRad = 10 * Mathf.Cos(Mathf.Deg2Rad * eulerAngles.y);
+                direction += new Vector3(2 * Mathf.Sin(angle) + xRad, 0, 2 * Mathf.Cos(angle) + yRad);
+
                 Debug.DrawLine(eyePosition, direction, Color.red, 1f);
-                print(8);
                 RaycastHit hitInfo;
-                print(9);
-                Physics.Raycast(eyePosition, direction, out hitInfo, maxDistance);
-                print(10);
-                if (hitInfo.transform.gameObject.CompareTag("Rival"))
-                {
-                    print(11);
-                    StartCoroutine(GunFire(hitInfo.transform.gameObject));
-                    print(12);
-                    yield return new WaitForSeconds(gunReloadTime);
-                }
+                if (Physics.Raycast(eyePosition, direction, out hitInfo, maxDistance))
+                    if (hitInfo.transform.gameObject.CompareTag("Rival"))
+                    {
+                        StartCoroutine(GunFire(hitInfo.transform.gameObject));
+                        yield return new WaitForSeconds(gunReloadTime);
+                    }
             }
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(Time.deltaTime);
         }
     }
 }

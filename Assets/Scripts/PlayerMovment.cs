@@ -40,8 +40,16 @@ public class PlayerMovment : MonoBehaviour
             float horizontal = joystick.Horizontal;
             float vertical = joystick.Vertical;
 
-            Vector3 movement = new Vector3(horizontal, 0.0f, vertical);
-            rb.MovePosition(transform.position + movement * speed * Time.deltaTime);
+            // Hareket ve rotasyon için yön vektörünü kullanýn
+            Vector3 direction = new Vector3(horizontal, 0.0f, vertical);
+
+            // Eðer yön vektörü sýfýrdan büyükse, oyuncu karakterinin rotasyonunu deðiþtirin
+            if (direction.sqrMagnitude > 0.0f)
+            {
+                transform.rotation = Quaternion.LookRotation(direction);
+            }
+
+            rb.MovePosition(transform.position + direction * speed * Time.deltaTime);
         }
     }
 }
