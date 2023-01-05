@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.PostProcessing;
 using DG.Tweening;
 
 public class HitTouchCharacter : MonoBehaviour
@@ -35,9 +37,19 @@ public class HitTouchCharacter : MonoBehaviour
         main.GetComponent<RivalSeeDistance>().isSwap = true;
         //partical
     }
-    private void CameraSwap(GameObject rival)
+    private IEnumerator CameraSwap(GameObject rival)
     {
+        MotionBlur motionBlur;
+        if (GhostManager.Instance.volume.profile.TryGetSettings<MotionBlur>(out motionBlur))
+        {
+            motionBlur.active = true;
+        }
         CamMoveControl.Instance.target = rival;
+        yield return new WaitForSeconds(1);
+        if (GhostManager.Instance.volume.profile.TryGetSettings<MotionBlur>(out motionBlur))
+        {
+            motionBlur.active = false;
+        }
     }
     private void CharacterSwap(GameObject rival)
     {
