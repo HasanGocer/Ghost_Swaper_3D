@@ -75,6 +75,7 @@ public class Buttons : MonoSingleton<Buttons>
 
     private void StartButton()
     {
+        print(GhostManager.Instance.volume.components[3].name);
         StartCoroutine(GhostManager.Instance.mainPlayer.GetComponent<RivalSeeDistance>().MainSeeRaycast());
         RoomManager.Instance.RivalCountPlacement();
         _startPanel.SetActive(false);
