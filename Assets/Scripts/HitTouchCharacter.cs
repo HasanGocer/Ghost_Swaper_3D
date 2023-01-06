@@ -39,11 +39,13 @@ public class HitTouchCharacter : MonoBehaviour
     }
     private IEnumerator CameraSwap(GameObject rival)
     {
-        var motionBlur = GhostManager.Instance.postProcessVolume.profile.GetSetting<MotionBlur>();
+        /*var motionBlur = GhostManager.Instance.postProcessVolume.profile.GetSetting<MotionBlur>();
         motionBlur.active = true;
+        Time.timeScale = 0.5f;*/
         CamMoveControl.Instance.target = rival;
-        yield return new WaitForSeconds(1);
-        motionBlur.active = false;
+        yield return new WaitForSecondsRealtime(1);
+        /* Time.timeScale = 1f;
+         motionBlur.active = false;*/
     }
     private void CharacterSwap(GameObject rival)
     {

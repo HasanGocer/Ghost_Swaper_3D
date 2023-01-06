@@ -35,12 +35,12 @@ public class MainSeeDistance : MonoBehaviour
 
                     Quaternion rotation = transform.rotation;
                     Vector3 eulerAngles = rotation.eulerAngles;
-                    print(Mathf.Sin(eulerAngles.y));
 
                     float xRad = 10 * Mathf.Sin(Mathf.Deg2Rad * eulerAngles.y);
                     float yRad = 10 * Mathf.Cos(Mathf.Deg2Rad * eulerAngles.y);
                     direction += new Vector3(2 * Mathf.Sin(angle) + xRad, 0, 2 * Mathf.Cos(angle) + yRad);
 
+                    Debug.DrawLine(eyePosition, direction, Color.red, 1f);
                     if (Physics.Raycast(eyePosition, direction, out RaycastHit hitInfo, maxDistance))
                         if (hitInfo.transform.gameObject.CompareTag("Main"))
                         {

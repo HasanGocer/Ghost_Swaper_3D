@@ -16,8 +16,8 @@ public class RoomManager : MonoSingleton<RoomManager>
     public void RivalCountPlacement()
     {
         RoomScens tempRoomScens = roomScens[GameManager.Instance.level];
-
         tempRoomScens.ScenePanel.SetActive(true);
+        FinishSystem.Instance.focusScene = tempRoomScens;
 
         for (int i = 0; i < tempRoomScens.Rooms.Count; i++)
         {

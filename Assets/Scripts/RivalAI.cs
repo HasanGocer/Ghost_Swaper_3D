@@ -18,6 +18,7 @@ public class RivalAI : MonoBehaviour
 
     private IEnumerator RunPath(List<GameObject> objects, List<GameObject> LookTargetObjects)
     {
+        yield return null;
         GameObject firstPos, lastPos, lookPos;
         while (isLive)
         {
