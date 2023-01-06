@@ -427,10 +427,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 694574727948587532}
-  walk: {fileID: -203655887218126122, guid: ccba0769dda02c741b53a7b9b4713b04, type: 3}
-  fireWalk: {fileID: 0}
-  fireIdle: {fileID: 0}
-  death: {fileID: -203655887218126122, guid: f4bad07934f12674dbf20b762606bc15, type: 3}
+  walk: {fileID: -203655887218126122, guid: 869a06189ce1b6a4eab0f97f5aab5b03, type: 3}
+  death: {fileID: -203655887218126122, guid: 352de954f732657449b1165d10b1e264, type: 3}
   "\u0131dle": {fileID: -203655887218126122, guid: 1a56b00ec6b12cf4789c54d5ff3a813d, type: 3}
 --- !u!114 &694574727948587528
 MonoBehaviour:
