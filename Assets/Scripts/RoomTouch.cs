@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class RoomTouch : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private RoomID roomID;
 
-    // Update is called once per frame
-    void Update()
+    private void TouchMain()
     {
-        
+        foreach(int i in GhostManager.Instance.room)
     }
 }
