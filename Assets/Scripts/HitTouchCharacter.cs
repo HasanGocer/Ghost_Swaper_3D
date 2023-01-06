@@ -13,7 +13,7 @@ public class HitTouchCharacter : MonoBehaviour
         {
             RivalControl(other.gameObject);
             BacksRivalDead();
-            CameraSwap(other.gameObject);
+            StartCoroutine(CameraSwap(other.gameObject));
             CharacterSwap(other.gameObject);
             ComponentPlacement();
             DeadCountAndFinishCheck();
@@ -39,17 +39,9 @@ public class HitTouchCharacter : MonoBehaviour
     }
     private IEnumerator CameraSwap(GameObject rival)
     {
-        MotionBlur motionBlur;
-        if (GhostManager.Instance.volume.profile.TryGetSettings<MotionBlur>(out motionBlur))
-        {
-            motionBlur.active = true;
-        }
+
         CamMoveControl.Instance.target = rival;
         yield return new WaitForSeconds(1);
-        if (GhostManager.Instance.volume.profile.TryGetSettings<MotionBlur>(out motionBlur))
-        {
-            motionBlur.active = false;
-        }
     }
     private void CharacterSwap(GameObject rival)
     {

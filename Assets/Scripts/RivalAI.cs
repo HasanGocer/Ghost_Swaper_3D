@@ -9,6 +9,7 @@ public class RivalAI : MonoBehaviour
     [SerializeField] private Ease easeType = Ease.InOutSine;
     [SerializeField] private List<GameObject> objects;
     [SerializeField] private List<GameObject> LookTargetObjects;
+    [SerializeField] private RoomID roomID;
 
     public void StartAI()
     {
@@ -20,7 +21,7 @@ public class RivalAI : MonoBehaviour
         GameObject firstPos, lastPos, lookPos;
         while (isLive)
         {
-            if (!isSeeMain)
+            if (!isSeeMain && roomID.RoomActive)
                 for (int i = 0; i < objects.Count; i++)
                 {
                     if (i == objects.Count - 1)
