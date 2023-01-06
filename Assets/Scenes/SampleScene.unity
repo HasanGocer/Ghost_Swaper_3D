@@ -203,12 +203,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b38fec196819bb439803e89a1d60e78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bar: {fileID: 0}
+  _bar: {fileID: 6738605958101779823}
   isFinish: 1
   _goRight: 1
   barMoneyFactor: 0
-  startPos: {fileID: 0}
-  finishPos: {fileID: 0}
+  startPos: {fileID: 6738605959234374536}
+  finishPos: {fileID: 6738605959601184215}
 --- !u!114 &88247700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1226,7 +1226,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 4.124e-42, y: 1.02e-43, z: 5.09687e-39, w: 0}
+  m_BoundingSphereOverride: {x: 6.18e-43, y: NaN, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -1397,7 +1397,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 3.2e-44, y: 1, z: 1, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -1733,7 +1733,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: NaN, w: 6e-44}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -2296,6 +2296,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StayRoom: {fileID: 218561902}
   mainPlayer: {fileID: 3191882793926403741}
+  animController: {fileID: 0}
   joystick: {fileID: 968687325}
   volume: {fileID: 11400000, guid: 10fc4df2da32a41aaa32d77bc913491c, type: 2}
 --- !u!114 &2125377747
@@ -2387,7 +2388,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: NaN}
+  m_BoundingSphereOverride: {x: 0, y: 4.5e-44, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -8607,6 +8608,10 @@ PrefabInstance:
     - target: {fileID: 694574727948587573, guid: 6eb10ddbecc142f488a178242213b904, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 694574727948587574, guid: 6eb10ddbecc142f488a178242213b904, type: 3}
+      propertyPath: areaSearchDistance
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6eb10ddbecc142f488a178242213b904, type: 3}

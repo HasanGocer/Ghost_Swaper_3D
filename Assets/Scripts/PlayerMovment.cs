@@ -21,7 +21,7 @@ public class PlayerMovment : MonoBehaviour
                 joystick.gameObject.SetActive(true);
                 joystick.transform.position = touch.position;
                 joystick.transform.rotation = Quaternion.identity;
-
+                GhostManager.Instance.animController.CallWalkAnim();
             }
 
             if (touch.phase == TouchPhase.Moved)
@@ -35,6 +35,7 @@ public class PlayerMovment : MonoBehaviour
             {
                 joystick.OnPointerUp(new PointerEventData(EventSystem.current));
                 joystick.gameObject.SetActive(false);
+                GhostManager.Instance.animController.CallIdleAnim();
             }
 
             float horizontal = joystick.Horizontal;

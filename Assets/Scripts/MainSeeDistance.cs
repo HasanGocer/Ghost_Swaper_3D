@@ -10,6 +10,7 @@ public class MainSeeDistance : MonoBehaviour
     [SerializeField] private float gunReloadTime;
     [SerializeField] private float maxDistance = 10.0f;
     [SerializeField] private RoomID roomID;
+    [SerializeField] private int areaDistance, areaSearchDistance;
 
 
     public IEnumerator GunFire(GameObject main)
@@ -29,16 +30,15 @@ public class MainSeeDistance : MonoBehaviour
             {
                 Vector3 eyePosition = transform.position + Vector3.up;
 
-                for (float angle = -50f; angle <= 50f; angle += 5f)
+                for (float angle = -150f; angle <= 150f; angle += 5f)
                 {
                     Vector3 direction = transform.position;
-
                     Quaternion rotation = transform.rotation;
                     Vector3 eulerAngles = rotation.eulerAngles;
 
-                    float xRad = 10 * Mathf.Sin(Mathf.Deg2Rad * eulerAngles.y);
-                    float yRad = 10 * Mathf.Cos(Mathf.Deg2Rad * eulerAngles.y);
-                    direction += new Vector3(2 * Mathf.Sin(angle) + xRad, 0, 2 * Mathf.Cos(angle) + yRad);
+                    float xRad = areaDistance * Mathf.Sin(Mathf.Deg2Rad * eulerAngles.y);
+                    float yRad = areaDistance * Mathf.Cos(Mathf.Deg2Rad * eulerAngles.y);
+                    direction += new Vector3(areaSearchDistance * Mathf.Sin(angle) + xRad, 0, areaSearchDistance * Mathf.Cos(angle) + yRad);
 
                     Debug.DrawLine(eyePosition, direction, Color.red, 1f);
                     if (Physics.Raycast(eyePosition, direction, out RaycastHit hitInfo, maxDistance))

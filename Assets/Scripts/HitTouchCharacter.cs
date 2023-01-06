@@ -32,7 +32,7 @@ public class HitTouchCharacter : MonoBehaviour
     private void BacksRivalDead()
     {
         GameObject main = GhostManager.Instance.mainPlayer;
-        main.GetComponent<AnimController>().CallDeadAnim();
+        GhostManager.Instance.animController.CallDeadAnim();
         main.GetComponent<CapsuleCollider>().enabled = false;
         main.GetComponent<RivalSeeDistance>().isSwap = true;
         //partical
@@ -40,9 +40,9 @@ public class HitTouchCharacter : MonoBehaviour
     private IEnumerator CameraSwap(GameObject rival)
     {
         GhostManager.Instance.volume.components[3].active = true;
-        Time.timeScale = 0.5f;
+        Time.timeScale = 0.2f;
         CamMoveControl.Instance.target = rival;
-        yield return new WaitForSecondsRealtime(1);
+        yield return new WaitForSecondsRealtime(2);
         GhostManager.Instance.volume.components[3].active = false;
         Time.timeScale = 1f;
     }

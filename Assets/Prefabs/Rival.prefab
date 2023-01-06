@@ -1064,7 +1064,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: {fileID: 9041733371170813029}
   walk: {fileID: -203655887218126122, guid: ccba0769dda02c741b53a7b9b4713b04, type: 3}
-  fire: {fileID: -203655887218126122, guid: b5b00c0f92228f34d9c34cfe406160cd, type: 3}
+  fireWalk: {fileID: 0}
+  fireIdle: {fileID: 0}
   death: {fileID: -203655887218126122, guid: f4bad07934f12674dbf20b762606bc15, type: 3}
   "\u0131dle": {fileID: -203655887218126122, guid: 1a56b00ec6b12cf4789c54d5ff3a813d, type: 3}
 --- !u!114 &9041733371170813025
@@ -1097,7 +1098,10 @@ MonoBehaviour:
   hit: {fileID: 9041733371170813025}
   rivalAI: {fileID: 9041733371170813053}
   gunReloadTime: 1
-  maxDistance: 10
+  maxDistance: 20
+  roomID: {fileID: 0}
+  areaDistance: 20
+  areaSearchDistance: 5
 --- !u!114 &9041733371170813053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1115,6 +1119,7 @@ MonoBehaviour:
   easeType: 4
   objects: []
   LookTargetObjects: []
+  roomID: {fileID: 0}
 --- !u!136 &2586811416232014560
 CapsuleCollider:
   m_ObjectHideFlags: 0

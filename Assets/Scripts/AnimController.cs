@@ -6,7 +6,7 @@ using Animancer;
 public class AnimController : MonoBehaviour
 {
     [SerializeField] private AnimancerComponent character;
-    [SerializeField] private AnimationClip walk, fire, death, ýdle;
+    [SerializeField] private AnimationClip walk, fireWalk, fireIdle, death, ýdle;
 
     public void CallIdleAnim()
     {
@@ -22,7 +22,11 @@ public class AnimController : MonoBehaviour
     }
     public IEnumerator CallFireAnim(float gunReloadTime, bool walk, bool ýdle)
     {
-        character.Play(fire, 0.1f);
+        if (walk)
+            character.Play(fireWalk, 0.1f);
+        if (ýdle)
+            character.Play(fireIdle, 0.1f);
+
         yield return new WaitForSeconds(gunReloadTime);
         if (walk)
             character.Play(walk, 0.2f);

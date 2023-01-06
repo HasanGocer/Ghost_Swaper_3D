@@ -72,10 +72,8 @@ public class Buttons : MonoSingleton<Buttons>
         //ObjectOpenSystem.Instance.newImageButton.onClick.AddListener(() => StartCoroutine(ObjectOpenSystem.Instance.NewImageButton()));
     }
 
-
     private void StartButton()
     {
-        print(GhostManager.Instance.volume.components[3].name);
         StartCoroutine(GhostManager.Instance.mainPlayer.GetComponent<RivalSeeDistance>().MainSeeRaycast());
         RoomManager.Instance.RivalCountPlacement();
         _startPanel.SetActive(false);

@@ -7,7 +7,14 @@ public class GhostManager : MonoSingleton<GhostManager>
 {
     public RoomID StayRoom;
     public GameObject mainPlayer;
-    public Joystick joystick; // The instantiated joystick object
+    public AnimController animController;
+    public Joystick joystick;
     public VolumeProfile volume;
+
+    public void StartGhostManager()
+    {
+        StartCoroutine(mainPlayer.GetComponent<RivalSeeDistance>().MainSeeRaycast());
+        animController.CallIdleAnim();
+    }
 }
 
