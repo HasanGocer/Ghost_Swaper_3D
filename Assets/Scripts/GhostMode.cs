@@ -28,6 +28,7 @@ public class GhostMode : MonoSingleton<GhostMode>
         GameManager.Instance.isStart = true;
         StartCoroutine(CameraSwap(tempRival));
         CharacterSwap(tempRival);
+        DeadCountAndFinishCheck();
     }
 
     private IEnumerator CameraSwap(GameObject rival)
@@ -39,11 +40,15 @@ public class GhostMode : MonoSingleton<GhostMode>
         GhostManager.Instance.volume.components[3].active = false;
         Time.timeScale = 1f;
     }
-
     private void CharacterSwap(GameObject rival)
     {
         GhostManager.Instance.mainPlayer = rival;
         rival.transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().material = MaterialSystem.Instance.MainMaterial;
         rival.tag = "Main";
+    }
+    private void DeadCountAndFinishCheck()
+    {
+        FinishSystem.Instance.deadRival++;
+        FinishSystem.Instance.FinishCheck();
     }
 }

@@ -21021,6 +21021,10 @@ PrefabInstance:
       propertyPath: roomID
       value: 
       objectReference: {fileID: 218561902}
+    - target: {fileID: 9041733371170813055, guid: c5db57177c995c149a21f94a033600ce, type: 3}
+      propertyPath: maxDistance
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5db57177c995c149a21f94a033600ce, type: 3}
 --- !u!65 &3812882093468473294
