@@ -7,6 +7,7 @@ TagManager:
   - Rival
   - Main
   - Dead
+  - Ghost
   layers:
   - Default
   - TransparentFX

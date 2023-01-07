@@ -35,6 +35,8 @@ public class ItemData : MonoSingleton<ItemData>
         field.mainDistance = standart.mainDistance + (factor.mainDistance * constant.mainDistance);
         fieldPrice.mainDistance = fieldPrice.mainDistance * factor.mainDistance;
         field.rivalDistance = standart.rivalDistance + (factor.rivalDistance * constant.rivalDistance);
+        field.mainDamageSpeed = standart.mainDamageSpeed + (factor.mainDamageSpeed * constant.mainDamageSpeed);
+        fieldPrice.mainDamageSpeed = fieldPrice.mainDamageSpeed * factor.mainDamageSpeed;
 
         if (factor.rivalHealth > maxFactor.rivalHealth)
             field.rivalHealth = maxFactor.rivalHealth;

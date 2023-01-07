@@ -13,7 +13,7 @@ public class LookCamera : MonoBehaviour
         {
             yield return null;
             canvas.transform.LookAt(mainCamera.transform);
-            yield return new WaitForSeconds(0.4f);
+            yield return new WaitForSeconds(Time.deltaTime);
         }
     }
 }

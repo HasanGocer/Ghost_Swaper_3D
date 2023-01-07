@@ -5,14 +5,14 @@ using UnityEngine.EventSystems;
 
 public class PlayerMovment : MonoBehaviour
 {
-    [SerializeField] private float speed = 6.0f; // Player movement speed
+    [SerializeField] private float speed = 10.0f; // Player movement speed
     public Joystick joystick; // The instantiated joystick object
     public Rigidbody rb; // The rigidbody component
     private Touch touch; // The touch component
 
     void Update()
     {
-        if (Input.touchCount > 0 && GameManager.Instance.isStart)
+        if (Input.touchCount > 0)
         {
             touch = Input.GetTouch(0);
 
@@ -21,7 +21,8 @@ public class PlayerMovment : MonoBehaviour
                 joystick.gameObject.SetActive(true);
                 joystick.transform.position = touch.position;
                 joystick.transform.rotation = Quaternion.identity;
-                GhostManager.Instance.animController.CallWalkAnim();
+                if (GameManager.Instance.isStart)
+                    GhostManager.Instance.animController.CallWalkAnim();
             }
 
             if (touch.phase == TouchPhase.Moved)
@@ -35,7 +36,8 @@ public class PlayerMovment : MonoBehaviour
             {
                 joystick.OnPointerUp(new PointerEventData(EventSystem.current));
                 joystick.gameObject.SetActive(false);
-                GhostManager.Instance.animController.CallIdleAnim();
+                if (GameManager.Instance.isStart)
+                    GhostManager.Instance.animController.CallIdleAnim();
             }
 
             float horizontal = joystick.Horizontal;
