@@ -774,6 +774,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 88247698}
+  - component: {fileID: 88247703}
   - component: {fileID: 88247701}
   - component: {fileID: 88247700}
   - component: {fileID: 88247699}
@@ -833,8 +834,8 @@ MonoBehaviour:
   _startPanel: {fileID: 5400486528824162138}
   _settingButton: {fileID: 8057266116493001276}
   _settingGame: {fileID: 3768306667763298270}
-  _red: {fileID: 0}
-  _green: {fileID: 0}
+  _red: {fileID: 21300000, guid: c18e14cdafadc574c8b33cbd5f62c955, type: 3}
+  _green: {fileID: 21300000, guid: 7dc690b2a03716e45be2487abae9f4ab, type: 3}
   _settingBackButton: {fileID: 8057266114641773404}
   _soundButton: {fileID: 8057266116206188923}
   _vibrationButton: {fileID: 8057266114678460475}
@@ -891,6 +892,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ghost: {fileID: 3191882793926403741}
   ghostModeButton: {fileID: 5400486529492873796}
+--- !u!114 &88247703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 88247697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b92cce5c31c2a464a9d25b82abee28da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  background: {fileID: 0}
 --- !u!1 &94096871
 GameObject:
   m_ObjectHideFlags: 0
@@ -1014,6 +1028,62 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ac74eb9c41037a44ae3b364ba415648, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  field:
+    rivalHealth: 0
+    mainHealth: 0
+    mainDistance: 0
+    rivalDistance: 0
+    rivalDamage: 0
+    mainDamage: 0
+    mainDamageSpeed: 0
+  standart:
+    rivalHealth: 0
+    mainHealth: 0
+    mainDistance: 0
+    rivalDistance: 0
+    rivalDamage: 0
+    mainDamage: 0
+    mainDamageSpeed: 0
+  factor:
+    rivalHealth: 0
+    mainHealth: 0
+    mainDistance: 0
+    rivalDistance: 0
+    rivalDamage: 0
+    mainDamage: 0
+    mainDamageSpeed: 0
+  constant:
+    rivalHealth: 0
+    mainHealth: 0
+    mainDistance: 0
+    rivalDistance: 0
+    rivalDamage: 0
+    mainDamage: 0
+    mainDamageSpeed: 0
+  maxFactor:
+    rivalHealth: 0
+    mainHealth: 0
+    mainDistance: 0
+    rivalDistance: 0
+    rivalDamage: 0
+    mainDamage: 0
+    mainDamageSpeed: 0
+  max:
+    rivalHealth: 0
+    mainHealth: 0
+    mainDistance: 0
+    rivalDistance: 0
+    rivalDamage: 0
+    mainDamage: 0
+    mainDamageSpeed: 0
+  fieldPrice:
+    rivalHealth: 0
+    mainHealth: 0
+    mainDistance: 0
+    rivalDistance: 0
+    rivalDamage: 0
+    mainDamage: 0
+    mainDamageSpeed: 0
 --- !u!114 &107667831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4824,7 +4894,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 6.18e-43, y: NaN, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -13608,6 +13678,7 @@ MonoBehaviour:
   animController: {fileID: 0}
   joystick: {fileID: 968687325}
   volume: {fileID: 11400000, guid: 10fc4df2da32a41aaa32d77bc913491c, type: 2}
+  mainHealth: 0
 --- !u!114 &2125377747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13963,7 +14034,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 4.5e-44, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -19618,7 +19689,6 @@ GameObject:
   - component: {fileID: 3191882793926638335}
   - component: {fileID: 3191882793926403747}
   - component: {fileID: 3191882793926403746}
-  - component: {fileID: 4263274811444209300}
   m_Layer: 0
   m_Name: Main
   m_TagString: Main
@@ -20921,10 +20991,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6102895449881260034}
     m_Modifications:
+    - target: {fileID: 525338196974657078, guid: c5db57177c995c149a21f94a033600ce, type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 1687258581}
     - target: {fileID: 2586811416232014560, guid: c5db57177c995c149a21f94a033600ce, type: 3}
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6598431950864018800, guid: c5db57177c995c149a21f94a033600ce, type: 3}
+      propertyPath: roomID
+      value: 
+      objectReference: {fileID: 218561902}
     - target: {fileID: 9041733371170514968, guid: c5db57177c995c149a21f94a033600ce, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -21535,20 +21613,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.17768355, y: 0.7137407, z: 0.6338727}
   m_Center: {x: -0.000015806407, y: 0.0000026971102, z: 0.013744596}
---- !u!136 &4263274811444209300
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3191882793926403741}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.44
-  m_Height: 1.99
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.81, z: 0}
 --- !u!65 &4264836924521671709
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -23,19 +23,20 @@ public class GhostMode : MonoSingleton<GhostMode>
             if (tempDistance > Vector3.Distance(FinishSystem.Instance.focusScene.Rivals[i].transform.position, ghost.transform.position))
                 tempRival = FinishSystem.Instance.focusScene.Rivals[i];
         }
+        RivalID rivalID = tempRival.GetComponent<RivalID>();
 
         Buttons.Instance._startPanel.SetActive(false);
         GameManager.Instance.isStart = true;
-        RivalControl(tempRival);
+        RivalControl(rivalID);
         StartCoroutine(CameraSwap(tempRival));
         CharacterSwap(tempRival);
-        ComponentPlacement();
+        ComponentPlacement(rivalID);
         DeadCountAndFinishCheck();
     }
 
-    private void RivalControl(GameObject rival)
+    private void RivalControl(RivalID rivalID)
     {
-        rival.GetComponent<RivalAI>().isLive = false;
+        rivalID.rivalAI.isLive = false;
     }
     private IEnumerator CameraSwap(GameObject rival)
     {
@@ -52,13 +53,19 @@ public class GhostMode : MonoSingleton<GhostMode>
         rival.transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().material = MaterialSystem.Instance.MainMaterial;
         rival.tag = "Main";
     }
-    private void ComponentPlacement()
+    private void ComponentPlacement(RivalID rivalID)
     {
         GameObject main = GhostManager.Instance.mainPlayer;
-        main.AddComponent<RivalSeeDistance>();
+
+
+        RivalSeeDistance rivalSeeDistance = main.AddComponent<RivalSeeDistance>();
         PlayerMovment playerMovment = main.AddComponent<PlayerMovment>();
+
+        GhostManager.Instance.animController = rivalID.animController;
+        rivalSeeDistance.hit = rivalID.hit;
         playerMovment.joystick = GhostManager.Instance.joystick;
         playerMovment.rb = main.GetComponent<Rigidbody>();
+        StartCoroutine(rivalSeeDistance.MainSeeRaycast());
     }
     private void DeadCountAndFinishCheck()
     {

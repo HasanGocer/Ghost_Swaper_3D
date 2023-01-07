@@ -1247,6 +1247,7 @@ GameObject:
   - component: {fileID: 9041733371170813053}
   - component: {fileID: 4978110185155701674}
   - component: {fileID: 6598431950864018800}
+  - component: {fileID: 525338196974657078}
   m_Layer: 0
   m_Name: Rival
   m_TagString: Rival
@@ -1429,7 +1430,23 @@ MonoBehaviour:
   mainSeeDistance: {fileID: 9041733371170813055}
   hit: {fileID: 9041733371170813025}
   animController: {fileID: 9041733371170813027}
+  lookCamera: {fileID: 525338196974657078}
   roomID: {fileID: 0}
+--- !u!114 &525338196974657078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9041733371170813050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd2058dd196ed5b4bb61186b73f0f04f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCamera: {fileID: 0}
+  canvas: {fileID: 3005036997511268823}
+  rivalID: {fileID: 6598431950864018800}
 --- !u!1 &9041733371170813052
 GameObject:
   m_ObjectHideFlags: 0

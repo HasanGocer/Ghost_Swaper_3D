@@ -10,6 +10,7 @@ public class RivalID : MonoBehaviour
     public MainSeeDistance mainSeeDistance;
     public Hit hit;
     public AnimController animController;
+    public LookCamera lookCamera;
     public RoomID roomID;
 
     public void RivalIDStart()

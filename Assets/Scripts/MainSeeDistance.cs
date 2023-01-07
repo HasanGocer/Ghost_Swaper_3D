@@ -6,9 +6,7 @@ public class MainSeeDistance : MonoBehaviour
 {
     //rivalde olcak
     [SerializeField] private RivalID rivalID;
-    [SerializeField] private float gunReloadTime;
-    [SerializeField] private float maxDistance = 10.0f;
-
+    [SerializeField] private float gunReloadTime = 0.3f;
 
     public IEnumerator GunFire(GameObject main)
     {
@@ -38,7 +36,7 @@ public class MainSeeDistance : MonoBehaviour
                     direction += new Vector3(ItemData.Instance.field.rivalDistance * Mathf.Sin(angle) + xRad, 0, ItemData.Instance.field.rivalDistance * Mathf.Cos(angle) + yRad);
 
                     Debug.DrawLine(eyePosition, direction, Color.red, 1f);
-                    if (Physics.Raycast(eyePosition, direction, out RaycastHit hitInfo, maxDistance))
+                    if (Physics.Raycast(eyePosition, direction, out RaycastHit hitInfo, ItemData.Instance.field.rivalDistance * 20))
                         if (hitInfo.transform.gameObject.CompareTag("Main"))
                         {
                             StartCoroutine(GunFire(hitInfo.transform.gameObject));

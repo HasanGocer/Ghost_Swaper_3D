@@ -6,10 +6,9 @@ public class RivalSeeDistance : MonoBehaviour
 {
     //mainde olacak
 
-    [SerializeField] private Hit hit;
+    public Hit hit;
     public bool isSwap = false;
-    [SerializeField] private float gunReloadTime;
-    [SerializeField] private float maxDistance = 10.0f;
+    [SerializeField] private float gunReloadTime = 0.3f;
 
     public IEnumerator GunFire(GameObject main)
     {
@@ -37,7 +36,7 @@ public class RivalSeeDistance : MonoBehaviour
 
                 Debug.DrawLine(eyePosition, direction, Color.red, 1f);
                 RaycastHit hitInfo;
-                if (Physics.Raycast(eyePosition, direction, out hitInfo, maxDistance))
+                if (Physics.Raycast(eyePosition, direction, out hitInfo, ItemData.Instance.field.mainDistance * 20))
                 {
                     if (hitInfo.transform.gameObject.CompareTag("Rival"))
                     {

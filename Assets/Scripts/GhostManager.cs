@@ -15,8 +15,6 @@ public class GhostManager : MonoSingleton<GhostManager>
     public void StartGhostManager()
     {
         mainHealth = ItemData.Instance.field.mainHealth;
-        StartCoroutine(mainPlayer.GetComponent<RivalSeeDistance>().MainSeeRaycast());
-        animController.CallIdleAnim();
     }
 }
 

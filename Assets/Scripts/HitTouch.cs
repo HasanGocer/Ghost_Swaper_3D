@@ -11,7 +11,7 @@ public class HitTouch : MonoBehaviour
             RivalID rivalID = other.GetComponent<RivalID>();
             ItemData.Field field = ItemData.Instance.field;
 
-            other.GetComponent<CharacterBar>().BarUpdate(field.rivalHealth, rivalID.rivalHealth, field.mainDamage);
+            rivalID.characterBar.BarUpdate(field.rivalHealth, rivalID.rivalHealth, field.mainDamage);
             rivalID.rivalHealth -= field.mainDamage;
         }
         if (other.CompareTag("Main"))
