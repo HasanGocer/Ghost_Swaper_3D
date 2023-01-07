@@ -9,8 +9,9 @@ public class LookCamera : MonoBehaviour
 
     public IEnumerator LookFocusCamera()
     {
-        while (rivalID.rivalAI.isLive)
+        while (GameManager.Instance.isStart)
         {
+            yield return null;
             canvas.transform.LookAt(mainCamera.transform);
             yield return new WaitForSeconds(0.4f);
         }

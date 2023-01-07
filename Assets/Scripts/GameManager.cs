@@ -28,11 +28,11 @@ public class GameManager : MonoSingleton<GameManager>
         MoneySystem.Instance.MoneyTextRevork(0);
 
         if (PlayerPrefs.HasKey("level"))
-            vibration = PlayerPrefs.GetInt("level");
+            level = PlayerPrefs.GetInt("level");
         else
         {
             PlayerPrefs.SetInt("level", 1);
-            vibration = PlayerPrefs.GetInt("level");
+            level = PlayerPrefs.GetInt("level");
         }
 
         if (PlayerPrefs.HasKey("vibration"))

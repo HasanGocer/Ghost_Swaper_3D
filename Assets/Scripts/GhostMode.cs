@@ -31,6 +31,7 @@ public class GhostMode : MonoSingleton<GhostMode>
         StartCoroutine(CameraSwap(tempRival));
         CharacterSwap(tempRival);
         ComponentPlacement(rivalID);
+        TouchMain(rivalID);
         DeadCountAndFinishCheck();
     }
 
@@ -61,11 +62,20 @@ public class GhostMode : MonoSingleton<GhostMode>
         RivalSeeDistance rivalSeeDistance = main.AddComponent<RivalSeeDistance>();
         PlayerMovment playerMovment = main.AddComponent<PlayerMovment>();
 
+        rivalID.roomID.RoomActive = true;
         GhostManager.Instance.animController = rivalID.animController;
         rivalSeeDistance.hit = rivalID.hit;
         playerMovment.joystick = GhostManager.Instance.joystick;
         playerMovment.rb = main.GetComponent<Rigidbody>();
         StartCoroutine(rivalSeeDistance.MainSeeRaycast());
+    }
+    private void TouchMain(RivalID rivalID)
+    {
+        rivalID.roomID.RoomActive = true;
+        foreach (int i in rivalID.roomID.FriendRoom)
+        {
+            FinishSystem.Instance.focusScene.Rooms[i - 1].GetComponent<RoomID>().RoomActive = true;
+        }
     }
     private void DeadCountAndFinishCheck()
     {

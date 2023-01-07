@@ -16,15 +16,15 @@ public class RoomManager : MonoSingleton<RoomManager>
 
     public void RivalCountPlacement()
     {
-        RoomScens tempRoomScens = roomScens[GameManager.Instance.level];
-        tempRoomScens.ScenePanel.SetActive(true);
-        FinishSystem.Instance.focusScene = tempRoomScens;
 
-        for (int i = 0; i < tempRoomScens.Rooms.Count; i++)
+        roomScens[GameManager.Instance.level].ScenePanel.SetActive(true);
+        FinishSystem.Instance.focusScene = roomScens[GameManager.Instance.level];
+
+        for (int i = 0; i < roomScens[GameManager.Instance.level].Rooms.Count; i++)
         {
-            RoomID roomID = tempRoomScens.Rooms[i].GetComponent<RoomID>();
+            RoomID roomID = roomScens[GameManager.Instance.level].Rooms[i].GetComponent<RoomID>();
 
-            tempRoomScens.rivalCount += roomID.Rivals.Count;
+            roomScens[GameManager.Instance.level].rivalCount += roomID.Rivals.Count;
             RivalsStart(roomID);
         }
     }

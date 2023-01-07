@@ -18,9 +18,9 @@ public class MainSeeDistance : MonoBehaviour
 
     public IEnumerator MainSeeRaycast()
     {
-        yield return null;
         while (rivalID.rivalAI.isLive)
         {
+            yield return null;
             if (rivalID.roomID.RoomActive)
             {
                 Vector3 eyePosition = transform.position + Vector3.up;

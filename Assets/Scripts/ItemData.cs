@@ -25,11 +25,9 @@ public class ItemData : MonoSingleton<ItemData>
     {
 
         field.rivalHealth = standart.rivalHealth + (factor.rivalHealth * constant.rivalHealth);
-        fieldPrice.rivalHealth = fieldPrice.rivalHealth * factor.rivalHealth;
         field.mainHealth = standart.mainHealth + (factor.mainHealth * constant.mainHealth);
         fieldPrice.mainHealth = fieldPrice.mainHealth * factor.mainHealth;
         field.rivalDamage = standart.rivalDamage + (factor.rivalDamage * constant.rivalDamage);
-        fieldPrice.rivalDamage = fieldPrice.rivalDamage * factor.rivalDamage;
         field.mainDamage = standart.mainDamage + (factor.mainDamage * constant.mainDamage);
         fieldPrice.mainDamage = fieldPrice.mainDamage * factor.mainDamage;
         field.mainHealth = standart.mainHealth + (factor.mainHealth * constant.mainHealth);
@@ -37,21 +35,20 @@ public class ItemData : MonoSingleton<ItemData>
         field.mainDistance = standart.mainDistance + (factor.mainDistance * constant.mainDistance);
         fieldPrice.mainDistance = fieldPrice.mainDistance * factor.mainDistance;
         field.rivalDistance = standart.rivalDistance + (factor.rivalDistance * constant.rivalDistance);
-        fieldPrice.rivalDistance = fieldPrice.rivalDistance * factor.rivalDistance;
 
-        if (field.rivalHealth > max.rivalHealth)
-            field.rivalHealth = max.rivalHealth;
-        if (field.mainHealth > max.mainHealth)
-            field.mainHealth = max.mainHealth;
-        if (field.mainDistance > max.mainDistance)
+        if (factor.rivalHealth > maxFactor.rivalHealth)
+            field.rivalHealth = maxFactor.rivalHealth;
+        if (factor.mainHealth > maxFactor.mainHealth)
+            field.mainHealth = maxFactor.mainHealth;
+        if (factor.mainDistance > maxFactor.mainDistance)
             field.mainDistance = max.mainDistance;
-        if (field.rivalDistance > max.rivalDistance)
+        if (factor.rivalDistance > maxFactor.rivalDistance)
             field.rivalDistance = max.rivalDistance;
-        if (field.rivalDamage > max.rivalDamage)
+        if (factor.rivalDamage > maxFactor.rivalDamage)
             field.rivalDamage = max.rivalDamage;
-        if (field.mainDamage > max.mainDamage)
+        if (factor.mainDamage > maxFactor.mainDamage)
             field.mainDamage = max.mainDamage;
-        if (field.mainDamageSpeed > max.mainDamageSpeed)
+        if (factor.mainDamageSpeed > maxFactor.mainDamageSpeed)
             field.mainDamageSpeed = max.mainDamageSpeed;
 
 
