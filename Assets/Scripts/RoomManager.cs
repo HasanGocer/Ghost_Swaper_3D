@@ -7,6 +7,7 @@ public class RoomManager : MonoSingleton<RoomManager>
     [System.Serializable]
     public class RoomScens
     {
+        public List<GameObject> Rivals = new List<GameObject>();
         public List<GameObject> Rooms = new List<GameObject>();
         public int rivalCount;
         public GameObject ScenePanel;

@@ -39,7 +39,8 @@ public class ItemData : MonoSingleton<ItemData>
             field.runnerSpeed = max.runnerSpeed;
         }*/
 
-
+        RoomManager.Instance.RivalCountPlacement();
+        GhostMode.Instance.GhostModeStart();
     }
 
     /*public void RunnerCount()

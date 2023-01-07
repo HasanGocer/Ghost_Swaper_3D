@@ -11,7 +11,6 @@ public class Buttons : MonoSingleton<Buttons>
     [SerializeField] private GameObject _globalPanel;
 
     public GameObject _startPanel;
-    [SerializeField] private Button _startButton;
 
     [SerializeField] private Button _settingButton;
     [SerializeField] private GameObject _settingGame;
@@ -63,20 +62,12 @@ public class Buttons : MonoSingleton<Buttons>
     }
     private void ButtonPlacement()
     {
-        _startButton.onClick.AddListener(StartButton);
         _settingButton.onClick.AddListener(SettingButton);
         _settingBackButton.onClick.AddListener(SettingBackButton);
         _soundButton.onClick.AddListener(SoundButton);
         _vibrationButton.onClick.AddListener(VibrationButton);
         _failButton.onClick.AddListener(FailButton);
         //ObjectOpenSystem.Instance.newImageButton.onClick.AddListener(() => StartCoroutine(ObjectOpenSystem.Instance.NewImageButton()));
-    }
-
-    private void StartButton()
-    {
-        RoomManager.Instance.RivalCountPlacement();
-        _startPanel.SetActive(false);
-        GameManager.Instance.isStart = true;
     }
 
     private void FailButton()
