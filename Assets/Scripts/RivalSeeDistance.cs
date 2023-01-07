@@ -13,7 +13,7 @@ public class RivalSeeDistance : MonoBehaviour
 
     public IEnumerator GunFire(GameObject main)
     {
-        StartCoroutine(hit.HitPlayer(main.gameObject));
+        StartCoroutine(hit.HitPlayer(main.gameObject, ItemData.Instance.field.mainDamageSpeed));
         yield return new WaitForSeconds(gunReloadTime);
     }
 

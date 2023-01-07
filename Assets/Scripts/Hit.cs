@@ -7,15 +7,14 @@ public class Hit : MonoBehaviour
     [SerializeField] private int _OPArrowCount;
     [SerializeField] private GameObject _handPos;
 
-    [SerializeField] private float _throwSpeed = 10.0f;
 
-    public IEnumerator HitPlayer(GameObject target)
+    public IEnumerator HitPlayer(GameObject target, float speed)
     {
         GameObject obj = ObjectPool.Instance.GetPooledObject(_OPArrowCount);
         obj.transform.position = _handPos.transform.position;
 
         // Calculate the velocity vector for the object
-        Vector3 velocity = CalculateVelocity(obj, target.transform.position, transform.position);
+        Vector3 velocity = CalculateVelocity(obj, target.transform.position, transform.position, speed);
 
         // Check if the velocity vector is valid before assigning it to the Rigidbody
         if (!float.IsNaN(velocity.x) && !float.IsNaN(velocity.y) && !float.IsNaN(velocity.z))
@@ -32,7 +31,7 @@ public class Hit : MonoBehaviour
     }
 
     // This function calculates the velocity vector for the object to be thrown towards the target point
-    Vector3 CalculateVelocity(GameObject obj, Vector3 target, Vector3 origin)
+    Vector3 CalculateVelocity(GameObject obj, Vector3 target, Vector3 origin, float speed)
     {
         obj.transform.LookAt(target);
         // Calculate the distance and height to the target point
@@ -47,7 +46,7 @@ public class Hit : MonoBehaviour
 
             // Calculate the velocity vector and return it
             float velocity = Mathf.Sqrt((0.5f * Physics.gravity.magnitude * Mathf.Pow(distance, 2)) / (Mathf.Sin(2 * radians) * distance));
-            return velocity * (target - origin).normalized * _throwSpeed;
+            return velocity * (target - origin).normalized * speed;
         }
         else
         {

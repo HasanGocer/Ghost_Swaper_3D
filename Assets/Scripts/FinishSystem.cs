@@ -14,9 +14,6 @@ public class FinishSystem : MonoSingleton<FinishSystem>
             Buttons.Instance.winPanel.SetActive(true);
             StartCoroutine(NoThanx());
             StartCoroutine(BarSystem.Instance.BarImageFillAmountIenum());
-
-            //bulunduðumuz karakteri öldür 
-            //finish
         }
     }
 

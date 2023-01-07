@@ -26,11 +26,17 @@ public class GhostMode : MonoSingleton<GhostMode>
 
         Buttons.Instance._startPanel.SetActive(false);
         GameManager.Instance.isStart = true;
+        RivalControl(tempRival);
         StartCoroutine(CameraSwap(tempRival));
         CharacterSwap(tempRival);
+        ComponentPlacement();
         DeadCountAndFinishCheck();
     }
 
+    private void RivalControl(GameObject rival)
+    {
+        rival.GetComponent<RivalAI>().isLive = false;
+    }
     private IEnumerator CameraSwap(GameObject rival)
     {
         GhostManager.Instance.volume.components[3].active = true;
@@ -45,6 +51,14 @@ public class GhostMode : MonoSingleton<GhostMode>
         GhostManager.Instance.mainPlayer = rival;
         rival.transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().material = MaterialSystem.Instance.MainMaterial;
         rival.tag = "Main";
+    }
+    private void ComponentPlacement()
+    {
+        GameObject main = GhostManager.Instance.mainPlayer;
+        main.AddComponent<RivalSeeDistance>();
+        PlayerMovment playerMovment = main.AddComponent<PlayerMovment>();
+        playerMovment.joystick = GhostManager.Instance.joystick;
+        playerMovment.rb = main.GetComponent<Rigidbody>();
     }
     private void DeadCountAndFinishCheck()
     {

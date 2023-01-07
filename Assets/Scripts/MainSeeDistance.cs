@@ -5,27 +5,25 @@ using UnityEngine;
 public class MainSeeDistance : MonoBehaviour
 {
     //rivalde olcak
-    [SerializeField] private Hit hit;
-    [SerializeField] private RivalAI rivalAI;
+    [SerializeField] private RivalID rivalID;
     [SerializeField] private float gunReloadTime;
     [SerializeField] private float maxDistance = 10.0f;
-    [SerializeField] private RoomID roomID;
 
 
     public IEnumerator GunFire(GameObject main)
     {
-        rivalAI.isSeeMain = true;
-        StartCoroutine(hit.HitPlayer(main.gameObject));
+        rivalID.rivalAI.isSeeMain = true;
+        StartCoroutine(rivalID.hit.HitPlayer(main.gameObject, 10));
         yield return new WaitForSeconds(gunReloadTime);
-        rivalAI.isSeeMain = false;
+        rivalID.rivalAI.isSeeMain = false;
     }
 
     public IEnumerator MainSeeRaycast()
     {
         yield return null;
-        while (rivalAI.isLive)
+        while (rivalID.rivalAI.isLive)
         {
-            if (roomID.RoomActive)
+            if (rivalID.roomID.RoomActive)
             {
                 Vector3 eyePosition = transform.position + Vector3.up;
 
