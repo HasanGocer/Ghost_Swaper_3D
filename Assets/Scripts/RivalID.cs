@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class RivalID : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public int rivalHealth;
 
-    // Update is called once per frame
-    void Update()
+    public void RivalIDStart()
     {
-        
+        ItemData.Instance.field.rivalHealth = rivalHealth;
     }
 }

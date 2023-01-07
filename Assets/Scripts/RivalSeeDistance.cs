@@ -10,8 +10,6 @@ public class RivalSeeDistance : MonoBehaviour
     public bool isSwap = false;
     [SerializeField] private float gunReloadTime;
     [SerializeField] private float maxDistance = 10.0f;
-    [SerializeField] private int areaDistance, areaSearchDistance;
-
 
     public IEnumerator GunFire(GameObject main)
     {
@@ -33,9 +31,9 @@ public class RivalSeeDistance : MonoBehaviour
                 Quaternion rotation = transform.rotation;
                 Vector3 eulerAngles = rotation.eulerAngles;
 
-                float xRad = areaDistance * Mathf.Sin(Mathf.Deg2Rad * eulerAngles.y);
-                float yRad = areaDistance * Mathf.Cos(Mathf.Deg2Rad * eulerAngles.y);
-                direction += new Vector3(areaSearchDistance * Mathf.Sin(angle) + xRad, 0, areaSearchDistance * Mathf.Cos(angle) + yRad);
+                float xRad = ItemData.Instance.field.mainDistance * 5 * Mathf.Sin(Mathf.Deg2Rad * eulerAngles.y);
+                float yRad = ItemData.Instance.field.mainDistance * 5 * Mathf.Cos(Mathf.Deg2Rad * eulerAngles.y);
+                direction += new Vector3(ItemData.Instance.field.mainDistance * Mathf.Sin(angle) + xRad, 0, ItemData.Instance.field.mainDistance * Mathf.Cos(angle) + yRad);
 
                 Debug.DrawLine(eyePosition, direction, Color.red, 1f);
                 RaycastHit hitInfo;

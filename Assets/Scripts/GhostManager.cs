@@ -10,9 +10,11 @@ public class GhostManager : MonoSingleton<GhostManager>
     public AnimController animController;
     public Joystick joystick;
     public VolumeProfile volume;
+    public int mainHealth;
 
     public void StartGhostManager()
     {
+        mainHealth = ItemData.Instance.field.mainHealth;
         StartCoroutine(mainPlayer.GetComponent<RivalSeeDistance>().MainSeeRaycast());
         animController.CallIdleAnim();
     }

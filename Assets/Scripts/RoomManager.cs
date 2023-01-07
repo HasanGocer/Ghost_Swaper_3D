@@ -34,7 +34,10 @@ public class RoomManager : MonoSingleton<RoomManager>
         for (int i1 = 0; i1 < roomID.Rivals.Count; i1++)
         {
             RivalAI rivalAI = roomID.Rivals[i1].GetComponent<RivalAI>();
+            RivalID rivalID = roomID.Rivals[i1].GetComponent<RivalID>();
             MainSeeDistance mainSeeDistance = roomID.Rivals[i1].GetComponent<MainSeeDistance>();
+
+            rivalID.RivalIDStart();
             StartCoroutine(mainSeeDistance.MainSeeRaycast());
             rivalAI.StartAI();
         }
