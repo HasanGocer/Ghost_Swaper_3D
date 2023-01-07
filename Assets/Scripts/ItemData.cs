@@ -9,7 +9,7 @@ public class ItemData : MonoSingleton<ItemData>
     [System.Serializable]
     public class Field
     {
-
+        public int rivalHealth, mainHealth;
     }
 
     public Field field;
@@ -22,6 +22,15 @@ public class ItemData : MonoSingleton<ItemData>
 
     private void Start()
     {
+
+        field.rivalHealth = standart.rivalHealth + (factor.rivalHealth * constant.rivalHealth);
+        fieldPrice.rivalHealth = fieldPrice.rivalHealth * factor.rivalHealth;
+
+        if (field.rivalHealth > max.rivalHealth)
+        {
+            field.rivalHealth = max.rivalHealth;
+        }
+
         /*field.runnerSpeed = standart.runnerSpeed - (factor.runnerSpeed * constant.runnerSpeed);
         fieldPrice.runnerSpeed = fieldPrice.runnerSpeed * factor.runnerSpeed;
 

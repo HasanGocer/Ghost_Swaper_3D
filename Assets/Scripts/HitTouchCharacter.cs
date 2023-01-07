@@ -7,7 +7,7 @@ using DG.Tweening;
 
 public class HitTouchCharacter : MonoBehaviour
 {
-    //ÝPTAL AHMET ABÝYE KÜFÜRLER
+    //ÝPTAL AHMET ABÝYE KÜFÜRLER(Þaka ehe)
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Rival"))
