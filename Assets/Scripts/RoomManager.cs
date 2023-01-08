@@ -37,7 +37,7 @@ public class RoomManager : MonoSingleton<RoomManager>
 
             StartCoroutine(rivalID.lookCamera.LookFocusCamera());
             rivalID.RivalIDStart();
-            StartCoroutine(rivalID.mainSeeDistance.MainSeeRaycast());
+            StartCoroutine(rivalID.mainSeeDistance.MainSeeRaycast(rivalID));
             rivalID.rivalAI.StartAI();
         }
     }

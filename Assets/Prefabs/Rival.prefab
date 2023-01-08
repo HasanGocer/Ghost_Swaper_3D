@@ -1348,8 +1348,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 9041733371170813029}
-  walk: {fileID: -203655887218126122, guid: ccba0769dda02c741b53a7b9b4713b04, type: 3}
-  death: {fileID: -203655887218126122, guid: f4bad07934f12674dbf20b762606bc15, type: 3}
+  walk: {fileID: -203655887218126122, guid: ccf4ef8f10f858c4abf109b2001d72b5, type: 3}
+  death: {fileID: -203655887218126122, guid: 5e55f8405623cc0459e22339ef30a18a, type: 3}
   "\u0131dle": {fileID: -203655887218126122, guid: 1a56b00ec6b12cf4789c54d5ff3a813d, type: 3}
 --- !u!114 &9041733371170813025
 MonoBehaviour:
@@ -1365,6 +1365,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _OPArrowCount: 0
   _handPos: {fileID: 9041733371170812954}
+  rivalID: {fileID: 6598431950864018800}
 --- !u!114 &9041733371170813055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1379,7 +1380,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rivalID: {fileID: 6598431950864018800}
   gunReloadTime: 1
-  maxDistance: 20
 --- !u!114 &9041733371170813053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1394,6 +1394,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isLive: 1
   isSeeMain: 0
+  isIssuse: 0
   easeType: 4
   objects: []
   LookTargetObjects: []

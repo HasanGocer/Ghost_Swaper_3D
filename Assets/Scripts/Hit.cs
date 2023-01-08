@@ -6,16 +6,18 @@ public class Hit : MonoBehaviour
 {
     [SerializeField] private int _OPArrowCount;
     [SerializeField] private GameObject _handPos;
+    [SerializeField] private RivalID rivalID;
 
 
     public IEnumerator HitPlayer(GameObject target, float speed)
     {
         GameObject obj = ObjectPool.Instance.GetPooledObject(_OPArrowCount);
         obj.transform.position = _handPos.transform.position;
-
+        transform.LookAt(target.transform);
         // Calculate the velocity vector for the object
         Vector3 velocity = CalculateVelocity(obj, target.transform.position, transform.position, speed);
 
+        obj.GetComponent<HitTouch>().isRival = rivalID.characterBar.isRival;
         // Check if the velocity vector is valid before assigning it to the Rigidbody
         if (!float.IsNaN(velocity.x) && !float.IsNaN(velocity.y) && !float.IsNaN(velocity.z))
         {

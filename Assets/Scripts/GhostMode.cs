@@ -65,6 +65,8 @@ public class GhostMode : MonoSingleton<GhostMode>
         RivalSeeDistance rivalSeeDistance = main.AddComponent<RivalSeeDistance>();
         PlayerMovment playerMovment = main.AddComponent<PlayerMovment>();
 
+        rivalID.rivalAI.isIssuse = true;
+        rivalID.characterBar.isRival = false;
         rivalID.roomID.RoomActive = true;
         GhostManager.Instance.animController = rivalID.animController;
         rivalSeeDistance.hit = rivalID.hit;

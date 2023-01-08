@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class CharacterBar : MonoBehaviour
 {
     [SerializeField] private Image bar;
-    [SerializeField] private bool isRival;
+    public bool isRival;
 
     public void BarUpdate(int max, int count, int down)
     {
@@ -41,16 +41,16 @@ public class CharacterBar : MonoBehaviour
         }
     }
 
-        private void RivalControl()
-        {
-            SkinnedMeshRenderer skinnedMeshRenderer = transform.GetChild(1).GetComponent<SkinnedMeshRenderer>();
+    private void RivalControl()
+    {
+        SkinnedMeshRenderer skinnedMeshRenderer = transform.GetChild(1).GetComponent<SkinnedMeshRenderer>();
 
-            RivalID rivalID = GetComponent<RivalID>();
-            rivalID.rivalAI.isLive = false;
-            rivalID.animController.CallDeadAnim();
-            skinnedMeshRenderer.material.color = Color.Lerp(skinnedMeshRenderer.material.color, MaterialSystem.Instance.deadMaterial.color, 1f);
-            gameObject.tag = "Dead";
-        }
+        RivalID rivalID = GetComponent<RivalID>();
+        rivalID.rivalAI.isLive = false;
+        rivalID.animController.CallDeadAnim();
+        skinnedMeshRenderer.material.color = Color.Lerp(skinnedMeshRenderer.material.color, MaterialSystem.Instance.deadMaterial.color, 1f);
+        gameObject.tag = "Dead";
+    }
     private void DeadCountAndFinishCheck()
     {
         FinishSystem.Instance.deadRival++;

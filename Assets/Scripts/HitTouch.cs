@@ -8,7 +8,7 @@ public class HitTouch : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Rival")&& isRival)
+        if (other.CompareTag("Rival") && !isRival)
         {
             RivalID rivalID = other.GetComponent<RivalID>();
             ItemData.Field field = ItemData.Instance.field;
@@ -16,7 +16,7 @@ public class HitTouch : MonoBehaviour
             rivalID.characterBar.BarUpdate(field.rivalHealth, rivalID.rivalHealth, field.mainDamage);
             rivalID.rivalHealth -= field.mainDamage;
         }
-        if (other.CompareTag("Main")&& !isRival)
+        if (other.CompareTag("Main") && isRival)
         {
             ItemData.Field field = ItemData.Instance.field;
 
