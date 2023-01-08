@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class HitTouch : MonoBehaviour
 {
+    public bool isRival;
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Rival"))
+        if (other.CompareTag("Rival")&& isRival)
         {
             RivalID rivalID = other.GetComponent<RivalID>();
             ItemData.Field field = ItemData.Instance.field;
@@ -14,7 +16,7 @@ public class HitTouch : MonoBehaviour
             rivalID.characterBar.BarUpdate(field.rivalHealth, rivalID.rivalHealth, field.mainDamage);
             rivalID.rivalHealth -= field.mainDamage;
         }
-        if (other.CompareTag("Main"))
+        if (other.CompareTag("Main")&& !isRival)
         {
             ItemData.Field field = ItemData.Instance.field;
 

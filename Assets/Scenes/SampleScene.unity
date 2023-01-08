@@ -812,7 +812,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b38fec196819bb439803e89a1d60e78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bar: {fileID: 6738605958101779823}
+  _bar: {fileID: 6738605959034567698}
   isFinish: 1
   _goRight: 1
   barMoneyFactor: 0

@@ -8,7 +8,7 @@ public class RivalSeeDistance : MonoBehaviour
 
     public Hit hit;
     public bool isSwap = false;
-    [SerializeField] private float gunReloadTime = 0.3f;
+    [SerializeField] private float gunReloadTime = 0.5f;
 
     public IEnumerator GunFire(GameObject main)
     {
@@ -21,7 +21,7 @@ public class RivalSeeDistance : MonoBehaviour
         yield return null;
         while (!isSwap)
         {
-            Vector3 eyePosition = transform.position + Vector3.up;
+            Vector3 eyePosition = transform.position + new Vector3(0, 3, 1.5f);
 
             for (float angle = -150f; angle <= 150f; angle += 5f)
             {
@@ -30,14 +30,14 @@ public class RivalSeeDistance : MonoBehaviour
                 Quaternion rotation = transform.rotation;
                 Vector3 eulerAngles = rotation.eulerAngles;
 
-                float xRad = ItemData.Instance.field.mainDistance * 5 * Mathf.Sin(Mathf.Deg2Rad * eulerAngles.y);
-                float yRad = ItemData.Instance.field.mainDistance * 5 * Mathf.Cos(Mathf.Deg2Rad * eulerAngles.y);
+                float xRad = ItemData.Instance.field.mainDistance * 3 * Mathf.Sin(Mathf.Deg2Rad * eulerAngles.y);
+                float yRad = ItemData.Instance.field.mainDistance * 3 * Mathf.Cos(Mathf.Deg2Rad * eulerAngles.y);
                 direction += new Vector3(ItemData.Instance.field.mainDistance * Mathf.Sin(angle) + xRad, 0, ItemData.Instance.field.mainDistance * Mathf.Cos(angle) + yRad);
 
-                Debug.DrawLine(eyePosition, direction, Color.red, 1f);
                 RaycastHit hitInfo;
-                if (Physics.Raycast(eyePosition, direction, out hitInfo, ItemData.Instance.field.mainDistance * 20))
+                if (Physics.Raycast(eyePosition, direction, out hitInfo, ItemData.Instance.field.mainDistance * 3))
                 {
+                    Debug.DrawLine(eyePosition, hitInfo.point, Color.red, ItemData.Instance.field.mainDistance * 3);
                     if (hitInfo.transform.gameObject.CompareTag("Rival"))
                     {
                         StartCoroutine(GunFire(hitInfo.transform.gameObject));

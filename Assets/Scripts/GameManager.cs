@@ -44,6 +44,11 @@ public class GameManager : MonoSingleton<GameManager>
             sound = PlayerPrefs.GetInt("sound");
         else
             PlayerPrefs.SetInt("sound", 1);
+
+        if (PlayerPrefs.HasKey("first"))
+            ItemData.Instance.factor = FactorPlacementRead();
+        else
+            FactorPlacementWrite(ItemData.Instance.factor);
     }
 
     public void FactorPlacementWrite(ItemData.Field factor)

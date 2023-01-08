@@ -15,6 +15,6 @@ public class RivalID : MonoBehaviour
 
     public void RivalIDStart()
     {
-        ItemData.Instance.field.rivalHealth = rivalHealth;
+        rivalHealth = ItemData.Instance.field.rivalHealth;
     }
 }

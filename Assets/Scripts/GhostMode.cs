@@ -21,7 +21,10 @@ public class GhostMode : MonoSingleton<GhostMode>
         for (int i = 0; i < FinishSystem.Instance.focusScene.Rivals.Count; i++)
         {
             if (tempDistance > Vector3.Distance(FinishSystem.Instance.focusScene.Rivals[i].transform.position, ghost.transform.position))
+            {
+                tempDistance = Vector3.Distance(FinishSystem.Instance.focusScene.Rivals[i].transform.position, ghost.transform.position);
                 tempRival = FinishSystem.Instance.focusScene.Rivals[i];
+            }
         }
         RivalID rivalID = tempRival.GetComponent<RivalID>();
 
@@ -42,7 +45,7 @@ public class GhostMode : MonoSingleton<GhostMode>
     private IEnumerator CameraSwap(GameObject rival)
     {
         GhostManager.Instance.volume.components[3].active = true;
-        Time.timeScale = 0.2f;
+        Time.timeScale = 0.4f;
         CamMoveControl.Instance.target = rival;
         yield return new WaitForSecondsRealtime(2);
         GhostManager.Instance.volume.components[3].active = false;
