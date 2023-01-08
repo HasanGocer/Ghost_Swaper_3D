@@ -30,8 +30,8 @@ public class RivalSeeDistance : MonoBehaviour
                 Quaternion rotation = transform.rotation;
                 Vector3 eulerAngles = rotation.eulerAngles;
 
-                float xRad = ItemData.Instance.field.mainDistance * 3 * Mathf.Sin(Mathf.Deg2Rad * eulerAngles.x);
-                float yRad = ItemData.Instance.field.mainDistance * 3 * Mathf.Cos(Mathf.Deg2Rad * eulerAngles.x);
+                float xRad = ItemData.Instance.field.mainDistance * 3 * Mathf.Sin(Mathf.Deg2Rad * eulerAngles.y);
+                float yRad = ItemData.Instance.field.mainDistance * 3 * Mathf.Cos(Mathf.Deg2Rad * eulerAngles.y);
                 direction += new Vector3(ItemData.Instance.field.mainDistance * Mathf.Sin(angle) + xRad, 0, ItemData.Instance.field.mainDistance * Mathf.Cos(angle) + yRad);
 
                 RaycastHit hitInfo;
